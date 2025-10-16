@@ -97,10 +97,25 @@ onUnmounted(() => {
 })
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+:root {
+  --color-orange: oklch(95% .4 95);
+  --color-pink: oklch(55% .45 350);
+}
+
 h1, h2, h3, h4 {
   font-family: "BBH Sans Bartle", sans-serif;
 	text-wrap: balance;
+  background: linear-gradient(
+    to bottom left in oklab,
+    var(--color-pink),
+    var(--color-orange)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  font-weight: 900;
 }
 body {
   padding: 0;
@@ -109,8 +124,8 @@ body {
   min-height: 100vh;
   background: linear-gradient(
     to bottom left in oklab,
-    oklch(55% .45 350),
-    oklch(95% .4 95)
+    var(--color-pink),
+    var(--color-orange)
   );
   font-family: "Roboto", sans-serif;
 
@@ -172,7 +187,6 @@ body {
       font-size: 2.5rem;
       font-weight: 700;
       margin-bottom: 1.5rem;
-      color: #2d3748;
       line-height: 1.2;
 
       @media (max-width: 768px) {
@@ -215,6 +229,7 @@ body {
       right: auto;
       transform: none !important;
     }
+    
   }
 
   &__canvas {
