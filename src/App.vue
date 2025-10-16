@@ -177,21 +177,21 @@ body {
     &-content {
       max-width: 600px;
       background: rgba(255, 255, 255, 0.95);
-      padding: 3rem;
+      padding: 2rem;
       border-radius: 20px;
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
       backdrop-filter: blur(10px);
+            @media (min-width: 769px) {
+              padding: 3em;
+      }
     }
 
     &-title {
       font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
+      /* font-weight: 700; */
+      margin-block: 0 0.5em;
       line-height: 1.2;
-
-      @media (max-width: 768px) {
-        font-size: 2rem;
-      }
+      font-size: clamp(1em, 5vw, 2em);
     }
 
     &-text {
