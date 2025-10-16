@@ -74,8 +74,8 @@ const initThreeJS = () => {
     1000
   )
   // Position camera slightly above and tilted down to show the top
-  camera.position.set(2, 2, 5)
-  camera.lookAt(0, 0, 0)
+  camera.position.set(1, 3, 4)
+  camera.lookAt(0, 1, 0)
 
   // Renderer setup
   renderer = new THREE.WebGLRenderer({ 
