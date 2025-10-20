@@ -2,35 +2,24 @@
   <div class="app">
     <div class="app__content">
       <div class="app__sections">
-        <section 
-          v-for="(section, index) in sections" 
-          :key="index"
-          :class="[
-            'app__section',
-            `app__section--${index + 1}`,
-            { 'app__section--left': index % 2 === 0 },
-            { 'app__section--right': index % 2 === 1 }
-          ]"
-          :ref="el => sectionRefs[index] = el"
-        >
+        <section v-for="(section, index) in sections" :key="index" :class="[
+          'app__section',
+          `app__section--${index + 1}`,
+          { 'app__section--left': index % 2 === 0 },
+          { 'app__section--right': index % 2 === 1 }
+        ]" :ref="el => sectionRefs[index] = el">
           <div class="app__section-content">
             <h2 class="app__section-title">{{ section.title }}</h2>
             <p class="app__section-text">{{ section.text }}</p>
           </div>
         </section>
       </div>
-      
-      <div 
-        class="app__canvas-container"
-        :class="{
-          'app__canvas-container--left': currentSide === 'left',
-          'app__canvas-container--right': currentSide === 'right'
-        }"
-      >
-        <ThreeJSCanvas 
-          ref="threeCanvasRef"
-          class="app__canvas"
-        />
+
+      <div class="app__canvas-container" :class="{
+        'app__canvas-container--left': currentSide === 'left',
+        'app__canvas-container--right': currentSide === 'right'
+      }">
+        <ThreeJSCanvas ref="threeCanvasRef" class="app__canvas" />
       </div>
     </div>
   </div>
@@ -70,7 +59,7 @@ const currentSide = ref('right')
 const handleScroll = () => {
   const scrollY = window.scrollY
   const windowHeight = window.innerHeight
-  
+
   // Determine which section is currently in view
   let activeSection = 0
   for (let i = 0; i < sectionRefs.value.length; i++) {
@@ -82,7 +71,7 @@ const handleScroll = () => {
       }
     }
   }
-  
+
   // Update canvas position based on active section
   currentSide.value = activeSection % 2 === 0 ? 'right' : 'left'
 }
@@ -103,36 +92,37 @@ onUnmounted(() => {
   --color-pink: oklch(55% .45 350);
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   font-family: "BBH Sans Bartle", sans-serif;
-	text-wrap: balance;
-  background: linear-gradient(
-    to bottom left in oklab,
-    var(--color-pink),
-    var(--color-orange)
-  );
+  text-wrap: balance;
+  background: linear-gradient(to bottom left in oklab,
+      var(--color-pink),
+      var(--color-orange));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-fill-color: transparent;
   font-weight: 900;
 }
+
 body {
   padding: 0;
 }
+
 .app {
   min-height: 100vh;
-  background: linear-gradient(
-    to bottom left in oklab,
-    var(--color-pink),
-    var(--color-orange)
-  );
+  background: linear-gradient(to bottom left in oklab,
+      var(--color-pink),
+      var(--color-orange));
   font-family: "Roboto", sans-serif;
 
   &__content {
     position: relative;
     min-height: 100vh;
-    
+
     @media (min-width: 769px) {
       display: flex;
     }
@@ -140,7 +130,7 @@ body {
 
   &__sections {
     flex: 1;
-    
+
     @media (min-width: 769px) {
       width: 50%;
     }
@@ -175,14 +165,15 @@ body {
     }
 
     &-content {
-      max-width: 600px;
+      max-width: 640px;
       background: rgba(255, 255, 255, 0.95);
       padding: 2rem;
       border-radius: 20px;
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
       backdrop-filter: blur(10px);
-            @media (min-width: 769px) {
-              padding: 3em;
+
+      @media (min-width: 769px) {
+        padding: 3em;
       }
     }
 
@@ -191,7 +182,7 @@ body {
       /* font-weight: 700; */
       margin-block: 0 0.5em;
       line-height: 1.2;
-      font-size: clamp(1em, 5vw, 2em);
+      font-size: clamp(1em, 5vw, 2.5em);
     }
 
     &-text {
@@ -229,7 +220,7 @@ body {
       right: auto;
       transform: none !important;
     }
-    
+
   }
 
   &__canvas {
