@@ -52,7 +52,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 // import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js'
 // import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader.js'
 // import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader.js'
-// import { textureBicubic } from 'three/src/nodes/TSL.js'
+import { textureBicubic } from 'three/src/nodes/TSL.js'
 
 const canvasRef = ref(null)
 const autoRotate = ref(true)
@@ -95,32 +95,32 @@ const initThreeJS = () => {
   const ambientLight = new THREE.AmbientLight(0xffffff, 0.8)
   scene.add(ambientLight)
 
-  // Main directional light
+  // // Main directional light
   const directionalLight = new THREE.DirectionalLight(0xffffff, 1.6)
   directionalLight.position.set(5, 5, 5)
-  directionalLight.castShadow = true
+  directionalLight.castShadow = false
   directionalLight.shadow.mapSize.width = 2048
   directionalLight.shadow.mapSize.height = 2048
   directionalLight.shadow.camera.near = 0.1
   directionalLight.shadow.camera.far = 50
   scene.add(directionalLight)
 
-  // Fill light from the opposite side
+  // // Fill light from the opposite side
   const fillLight = new THREE.DirectionalLight(0xffffff, 0.8)
   fillLight.position.set(-5, 3, -5)
   scene.add(fillLight)
 
-  // Rim light for better definition
+  // // Rim light for better definition
   const rimLight = new THREE.DirectionalLight(0x4fc3f7, 0.6)
   rimLight.position.set(0, 0, -8)
   scene.add(rimLight)
 
   // Additional point lights for better illumination
-  const pointLight1 = new THREE.PointLight(0xffffff, 1.2, 100)
+  const pointLight1 = new THREE.PointLight(0x4fc3f7, 1.2, 100)
   pointLight1.position.set(-3, 3, 3)
   scene.add(pointLight1)
 
-  const pointLight2 = new THREE.PointLight(0xffffff, 1.2, 100)
+  const pointLight2 = new THREE.PointLight(0x4fc3f7, 1.2, 100)
   pointLight2.position.set(3, -3, 3)
   scene.add(pointLight2)
 
